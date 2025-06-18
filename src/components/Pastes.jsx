@@ -15,8 +15,10 @@ import {
   faPen,
 } from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function Pastes() {
+  const navigate = useNavigate();
   const pastes = useSelector((state) => state.paste.pastes);
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
@@ -87,9 +89,7 @@ function Pastes() {
                         className=" hover:cursor-pointer border-1 border-neutral-400 bg-transparent px-2 py-3 hover:shadow-lg"
                       />
                       <button
-                        onClick={() =>
-                          (window.location.href = `/pastes/${paste._id}`)
-                        }
+                        onClick={() => navigate(`/pastes/${paste._id}`)}
                         className="border hover:cursor-pointer border-neutral-400 bg-transparent px-2 py-2 hover:shadow-lg">
                         <FontAwesomeIcon icon={faEye} />
                       </button>
